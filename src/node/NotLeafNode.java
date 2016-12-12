@@ -115,7 +115,7 @@ public abstract class NotLeafNode extends Node {
 		st.counter_by_phase[st.fase]++;
 				
 		// Se pasa al nodo siguiente directamente.
-		if (gg <= g) {			
+		if (gg <= g) {					
 			return chld.getChild().searchFinalArc(fase, beta.substring(gg), chld);
 		}
 		

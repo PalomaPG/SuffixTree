@@ -21,7 +21,7 @@ public abstract class AbsSuffixTree {
 	//count_w = 0: w recién fue creado; count_w = 1: w fue creado en la extensión anterior, por lo tanto, se le asigna un SuffixLink
 	protected int count_w; 	
 	protected NotLeafNode last; // Último nodo que se recorrió
-	protected int jL;
+	protected int jL = 1;
 	public int [] counter_by_phase;
 	
 	public AbsSuffixTree(){
@@ -98,28 +98,36 @@ public abstract class AbsSuffixTree {
 		root.addChild(new Arc(root, new Leaf(0, this), 0, -1));		// -1 = END
 		//labelPrint();
 		//System.out.println();
-		int finish;
-		int op;
+		int finish;		
 		for (fase = 1; fase < text.length(); fase ++) {
 			//fase i	
 			//System.out.println();
-			//System.out.println("fase " + fase);			
+			System.out.println("fase " + fase);			
 			w = null;
 			v = root;
 			counter_by_phase[fase] += 2;
-			
-			for (int j = 0; j <= fase; j ++) {		
+			int actual_jL = jL;
+			System.out.println("jL= " + actual_jL);
+			System.out.println();
+			jL = 0;
+			for (int j = actual_jL; j <= fase; j ++) {		
 				/*System.out.println();
-				System.out.println();*/
-				//System.out.println("j = " + j);		
+				System.out.println();
+				System.out.println("j = " + j);		*/
 				finish = extension(fase, j);
-				/*System.out.println("v : " + v.getName());
-				if (w != null) System.out.println("w : " + w.getName());
-				else System.out.println("w : null");			
-				labelPrint();
-				System.out.println();*/
+				//System.out.println("v : " + v.getName());
+				if (w != null) //System.out.println("w : " + w.getName());
+				//else //System.out.println("w : null");			
+				//labelPrint();
+				//System.out.println();
 				
-				if (finish == 1) break;
+				System.out.println("finish = " + finish);	
+				if (finish == 1) {
+					System.out.println("REGLA3");
+					jL = j - 1;
+					break;
+				}
+				else jL = j;
 			}
 			
 		}

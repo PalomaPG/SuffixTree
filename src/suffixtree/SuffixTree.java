@@ -39,7 +39,10 @@ public class SuffixTree extends AbsSuffixTree {
 				
 				ini.addChild(nuevo);
 			}
-			else //System.out.println("No se hace nada");
+			else {
+				//System.out.println("No se hace nada");
+				return 1;
+			}
 			return 0;
 		}
 		
@@ -74,6 +77,8 @@ public class SuffixTree extends AbsSuffixTree {
 			if (chldrn.containsKey(text.charAt(i))) {
 				// Regla 3. Si existe un camino que comienza con s[i]. No se hace nada
 				//System.out.println("No se hace nada");	
+				//jL -= 1;
+				//System.out.println("REGLA3");
 				return 1;
 			}
 			// Si no existe un camino que comienza con s[i], se crea un nuevo arco
@@ -89,8 +94,9 @@ public class SuffixTree extends AbsSuffixTree {
 			//System.out.println("beta termina en mitad de un arco");				
 			if (text.charAt(edge.getLabel()[0] + last_pos) == text.charAt(i)) {
 				counter_by_phase[fase]++;
-		    	//System.out.println("No se hace nada");
+		    	System.out.println("No se hace nada");
 				last = edge.getParent();	
+				return 1;
 			}
 			else {
 				//System.out.println("Se crea nodo interno");
@@ -131,7 +137,8 @@ public class SuffixTree extends AbsSuffixTree {
 				counter_by_phase[fase] += 2;
 				
 			}				
-		}				
+		}		
+		//jL = j;
 		return 0;		
 	}
 	
