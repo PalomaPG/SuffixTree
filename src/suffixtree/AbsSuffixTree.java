@@ -23,7 +23,7 @@ public abstract class AbsSuffixTree {
 	protected NotLeafNode last; // Último nodo que se recorrió
 	protected int jL = 1;
 	public int [] counter_by_phase;
-	
+		
 	public AbsSuffixTree(){
 		root = new Root(this);	
 	}	
@@ -76,6 +76,14 @@ public abstract class AbsSuffixTree {
 		}
 	}
 	
+	public String getCosts() {
+		StringBuffer costs = new StringBuffer();
+		for (int i = 0; i < counter_by_phase.length; i ++) {
+			costs.append(counter_by_phase[i] + " ");			
+		}
+		return costs.toString();
+	}
+	
 	public void printCounter() {
 		System.out.println();
 		System.out.print("[");
@@ -102,13 +110,13 @@ public abstract class AbsSuffixTree {
 		for (fase = 1; fase < text.length(); fase ++) {
 			//fase i	
 			//System.out.println();
-			System.out.println("fase " + fase);			
+			//System.out.println("fase " + fase);			
 			w = null;
 			v = root;
 			counter_by_phase[fase] += 2;
 			int actual_jL = jL;
-			System.out.println("jL= " + actual_jL);
-			System.out.println();
+			//System.out.println("jL= " + actual_jL);
+			//System.out.println();
 			jL = 0;
 			for (int j = actual_jL; j <= fase; j ++) {		
 				/*System.out.println();
@@ -116,14 +124,15 @@ public abstract class AbsSuffixTree {
 				System.out.println("j = " + j);		*/
 				finish = extension(fase, j);
 				//System.out.println("v : " + v.getName());
-				if (w != null) //System.out.println("w : " + w.getName());
+				//if (w != null) //System.out.println("w : " + w.getName());
 				//else //System.out.println("w : null");			
 				//labelPrint();
 				//System.out.println();
 				
-				System.out.println("finish = " + finish);	
+				//System.out.println("finish = " + finish);	
 				if (finish == 1) {
-					System.out.println("REGLA3");
+					//System.out.println("finish = " + finish);
+					//System.out.println("REGLA3");
 					jL = j - 1;
 					break;
 				}
