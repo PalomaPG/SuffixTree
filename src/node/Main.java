@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import suffixtree.SuffixTree;
-import test.TextProcessing;
+import test.Test;
 
 public class Main {
 	

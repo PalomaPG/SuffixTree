@@ -21,7 +21,7 @@ public class SuffixTree extends AbsSuffixTree {
 	
 	
 	public int extensionByRules(int i, int j, NotLeafNode ini, String s) {		
-		// Cálculo de BETA
+		// Cï¿½lculo de BETA
 		String beta;		
 		if (j >= i) beta = "";
 		else if (s.equals(text)) beta = s.substring(j, i);	
@@ -58,11 +58,11 @@ public class SuffixTree extends AbsSuffixTree {
 			//System.out.println("beta termina en una hoja");						
 		}
 		
-	    //// Estamos en la raíz Ó Regla 2.1 Beta termina en un nodo interno
+	    //// Estamos en la raï¿½z ï¿½ Regla 2.1 Beta termina en un nodo interno
 		else if (edge == null || last_pos == -1) {			
 			NotLeafNode node;			
 			if (edge == null) { //  || edge.getChild() instanceof Leaf) {
-				//System.out.println("Estamos en la raíz");					
+				//System.out.println("Estamos en la raï¿½z");					
 				node = ini; 
 				last = ini;		
 				counter_by_phase[fase] += 2;
@@ -94,7 +94,7 @@ public class SuffixTree extends AbsSuffixTree {
 			//System.out.println("beta termina en mitad de un arco");				
 			if (text.charAt(edge.getLabel()[0] + last_pos) == text.charAt(i)) {
 				counter_by_phase[fase]++;
-		    	System.out.println("No se hace nada");
+//		    	System.out.println("No se hace nada");
 				last = edge.getParent();	
 				return 1;
 			}
@@ -109,11 +109,11 @@ public class SuffixTree extends AbsSuffixTree {
 				// Se elimina el arco actual
 				parent.removeChild(edge);					
 				
-				// Se crea nuevo arco con el key del arco actual, pero sólo hasta donde llegó beta
+				// Se crea nuevo arco con el key del arco actual, pero sï¿½lo hasta donde llegï¿½ beta
 				Arc beta_edge = new Arc(parent, new_node, edge.getLabel()[0], edge.getLabel()[0] + last_pos - 1);							
 				parent.addChild(beta_edge);				
 				
-				// Se crea nuevo arco con el key del arco actual con la parte que no se recorrió
+				// Se crea nuevo arco con el key del arco actual con la parte que no se recorriï¿½
 				Arc rest = new Arc(new_node, edge.getChild(), edge.getLabel()[0] + last_pos, edge.getLabel()[1]);
 				new_node.addChild(rest);		
 				
@@ -121,13 +121,13 @@ public class SuffixTree extends AbsSuffixTree {
 				Arc new_edge = new Arc(new_node, new Leaf(j, this), i, -1);
 				new_node.addChild(new_edge);
 				
-				// El nuevo nodo parte con un suffix link apuntando a la raíz
+				// El nuevo nodo parte con un suffix link apuntando a la raï¿½z
 				new_node.setSuffixLink(new SuffixLink(root));
 				
 				last = new_node;
 				counter_by_phase[fase]++;
 				
-				// Si se siguió la regla 2.2 en la extensión anterior
+				// Si se siguiï¿½ la regla 2.2 en la extensiï¿½n anterior
 				if (w != null) {
 					//System.out.println("Se crea SuffixLink entre " + w.getName() + " y " + new_node.getName());					
 					w.setSuffixLink(new SuffixLink(new_node));					
