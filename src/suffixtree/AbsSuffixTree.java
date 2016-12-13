@@ -23,7 +23,7 @@ public abstract class AbsSuffixTree {
 	protected NotLeafNode last; // �ltimo nodo que se recorri�
 	protected int jL = 1;
 	public int [] counter_by_phase;
-	
+		
 	public AbsSuffixTree(){
 		root = new Root(this);	
 	}	
@@ -84,6 +84,7 @@ public abstract class AbsSuffixTree {
 			totalCost += counter_by_phase[i];
 		}
 		costs.append("\n" + "Total cost: " + totalCost);
+		
 		return costs.toString();
 	}
 	
@@ -111,7 +112,6 @@ public abstract class AbsSuffixTree {
 		//System.out.println();
 		int finish;		
 		for (fase = 1; fase < text.length(); fase ++) {
-			//fase i		
 			w = null;
 			v = root;
 			counter_by_phase[fase] += 2;
@@ -119,10 +119,16 @@ public abstract class AbsSuffixTree {
 			jL = 0;
 			for (int j = actual_jL; j <= fase; j ++) {		
 				finish = extension(fase, j);
+
 //				if (w != null)
 //					break;
 //					System.out.println("finish = " + finish);	
+
+				//System.out.println("finish = " + finish);	
 				if (finish == 1) {
+					//System.out.println("finish = " + finish);
+					//System.out.println("REGLA3");
+
 					jL = j - 1;
 					break;
 				}

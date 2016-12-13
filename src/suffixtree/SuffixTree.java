@@ -94,7 +94,6 @@ public class SuffixTree extends AbsSuffixTree {
 			//System.out.println("beta termina en mitad de un arco");				
 			if (text.charAt(edge.getLabel()[0] + last_pos) == text.charAt(i)) {
 				counter_by_phase[fase]++;
-//		    	System.out.println("No se hace nada");
 				last = edge.getParent();	
 				return 1;
 			}
