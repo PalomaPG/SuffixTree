@@ -63,9 +63,9 @@ public abstract class NotLeafNode extends Node {
     
 	
 	/* [Arc, position] 
-	 * position = -1: se terminó el recorrido en un nodo interno
-	 * position = -2: se terminó el recorrido en una hoja
-	 * position = p: se terminó el recorrido en medio del arco en la posición p de la llave de ese arco
+	 * position = -1: se terminï¿½ el recorrido en un nodo interno
+	 * position = -2: se terminï¿½ el recorrido en una hoja
+	 * position = p: se terminï¿½ el recorrido en medio del arco en la posiciï¿½n p de la llave de ese arco
 	  */	 
 	public Object [] searchFinalArc(int fase, String beta, Arc last) {
 		Object [] res = new Object[2];	
@@ -183,6 +183,7 @@ public abstract class NotLeafNode extends Node {
 		// TODO Auto-generated method stub
 		Iterator<Entry<Character, Arc>> it = children.entrySet().iterator();
 		while(it.hasNext()){
+			st.incrSearchCost();
 			Entry<Character, Arc> pair = it.next();
 			pair.getValue().child.getLeavesValues(positions);
 		}

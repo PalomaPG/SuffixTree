@@ -23,9 +23,12 @@ public abstract class AbsSuffixTree {
 	protected NotLeafNode last; // �ltimo nodo que se recorri�
 	protected int jL = 1;
 	public int [] counter_by_phase;
-		
+	private int search_cost;	
+	
+	
 	public AbsSuffixTree(){
 		root = new Root(this);	
+		search_cost=0;
 	}	
 	
 
@@ -95,6 +98,18 @@ public abstract class AbsSuffixTree {
 			System.out.print(counter_by_phase[i] + ", ");
 		}
 		System.out.println(counter_by_phase[counter_by_phase.length - 1] + "]");
+	}
+	
+	public int getSearchCost(){
+		return search_cost;
+	}
+	
+	public void setSearchCost(int cost){
+		search_cost = cost;
+	}
+	
+	public void incrSearchCost(){
+		search_cost++;
 	}
 	
 	public AbsSuffixTree ukkonen(String s) {		

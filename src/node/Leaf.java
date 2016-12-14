@@ -64,6 +64,7 @@ public class Leaf extends Node {
 	public void getLeavesValues(LinkedList<Integer> positions) {
 		// TODO Auto-generated method stub
 		positions.add(position);
+		st.incrSearchCost();
 	}
 	
 	public HashMap<Character, Arc> getChildren() {

@@ -45,27 +45,27 @@ public class Main {
 				       */
 		SuffixTree st = new SuffixTree();	
 		
-		String path = "C:/Users/natto/Downloads/t24.txt";
+		String path = "input/t15.txt";
 		
 		//st = (SuffixTree)st.ukkonen("xyzxyaxyz$");    
 		//st = (SuffixTree)st.ukkonen("abcabxabcd");
 		//st = (SuffixTree)st.ukkonen(text2); 
 		
 		read(path);
-		
+		String text = "the";
 		//String greater = TextProcessing.clean("pizza chili").toString();
 		
-		st = (SuffixTree)st.ukkonen(great.toString()); 		
+		st = (SuffixTree)st.ukkonen("theanimalwastheretherefore"); 		
 		st.convertToReal();		
 		
 		
-		System.out.println(great.length());
+		//System.out.println(great.length());
 	    String costs = st.getCosts(); 
 	    
 	    st.resetCounter();
-		
-	    System.out.println(costs);
-		st.print();
+		System.err.println(st.search(text, new LinkedList<Integer>(), st.getRoot(), st.getText()));
+	    //System.out.println(costs);
+		//st.print();
 		
 		//System.out.println(st.search("abcd", new LinkedList<Integer>(),st.getRoot(), great));			
 		

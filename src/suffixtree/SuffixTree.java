@@ -147,6 +147,7 @@ public LinkedList<Integer> search(String s, LinkedList<Integer> positions, Node 
 		//System.out.println(children_);
 		Arc arc = children_.get(s.charAt(0));
 		//System.out.println(arc);
+		this.incrSearchCost();
 		
 		if (arc!= null){
 			
@@ -157,6 +158,7 @@ public LinkedList<Integer> search(String s, LinkedList<Integer> positions, Node 
 				
 				if(next.getPosition()>-1){
 					positions.add(next.getPosition());
+					this.incrSearchCost();
 					return positions;
 				}
 				else {	
@@ -180,6 +182,7 @@ public LinkedList<Integer> search(String s, LinkedList<Integer> positions, Node 
 					/*The string s is shorter than the arc stored string*/
 					if(arc.getKey().toString().indexOf(s)==0){
 						next.getLeavesValues(positions);
+						this.incrSearchCost();
 						return positions;
 					}
 					/*The string s is differs in at least one character*/
